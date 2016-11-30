@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :posts do
+      collection do
+        post :preview
+      end
+      resources :comments
+    end
+    resources :sessions
+    root 'dashboard#index'
+  end
+
+
 end
