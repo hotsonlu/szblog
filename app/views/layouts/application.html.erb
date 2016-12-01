@@ -26,10 +26,13 @@
                     <div class="collapse navbar-collapse nav-submenu-color collapse" id="bs-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right custom">
                             <li>
-                                <a href="/">Home</a>
+                                <%= link_to 'Blog', blogs_path %>
                             </li>
 
-                          
+                            <li>
+                                <%= link_to 'login', new_admin_session_path %>
+                            </li>
+
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
