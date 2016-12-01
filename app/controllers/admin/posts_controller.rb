@@ -26,11 +26,11 @@ class Admin::PostsController < ApplicationController
   end
 
   def create
-     @post = Post.new( params.permit(:title, :content) )
+     @post = Post.new(post_attrs)
 
     if @post.save
       flash[:notice] = '创建博客成功'
-      redirect_to admin_posts_path
+      redirect_to blogs_path
     else
       flash.now[:error] = '创建失败'
       render :new
@@ -48,6 +48,11 @@ class Admin::PostsController < ApplicationController
       flash[:error] = '更新博客失败'
       render :edit
     end
+  end
+
+  private
+  def post_attrs
+    params.require(:post).permit(:title, :content)
   end
 
 
