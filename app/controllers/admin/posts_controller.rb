@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(25)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def create
