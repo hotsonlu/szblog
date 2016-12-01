@@ -8,6 +8,7 @@ class Admin::PostsController < ApplicationController
 
   def edit
     @post = Post.find( params[:id] )
+    render :new
   end
 
   def destroy
@@ -39,14 +40,16 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find( params[:id] )
+    @post.attributes = post_attrs
 
 
-    if @post.update( params.permit(:title, :content) )
+    if @post.save
+
       flash[:notice] = '更新博客成功'
       redirect_to admin_posts_path
     else
-      flash[:error] = '更新博客失败'
-      render :edit
+      flash[:notice] = '更新博客失败'
+      render :new
     end
   end
 
