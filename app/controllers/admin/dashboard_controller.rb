@@ -1,6 +1,6 @@
 class Admin::DashboardController < ApplicationController
-  # layout 'layouts/admin'
-  # before_action :authericate_user!
+  layout 'layouts/admin'
+  before_action :authericate_user!
 
   def index
 

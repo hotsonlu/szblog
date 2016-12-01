@@ -16,13 +16,13 @@ class Admin::SessionsController < ApplicationController
       render :new
     else
       flash[:notice] = "OK, You got it."
-      session[:login] = true
-      redirect_to root_path
+      session[:login_info] = true
+      redirect_to admin_dashboard_index_path
     end
   end
 
   def destroy
-    session[:login] = nil
+    session[:login_info] = nil
     redirect_to new_admin_session_path
   end
 end

@@ -1,26 +1,67 @@
-<div class="container">
-  <h2>Hover Rows</h2>
-  <p>The .table-hover class enables a hover state on table rows:</p>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-         <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-         <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-         <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-         <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Szblog</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
+        <header name="top">
+            <nav class="navbar navbar-default navbar-fixed-top nav-color" role="navigation" id="nav">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav-color">
+                        <button id="nav_collapse" type="button" class="navbar-toggle toggle-btn" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-controls="bs-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand custom-logo-link" href="/">
+                            SZlist
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse nav-submenu-color collapse" id="bs-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-left custom">
+                          <li>
+                              <a href="/">Home</a>
+                          </li>
+
+                          <li>
+                            <%= link_to "Create Blog", new_admin_post_path %>
+                          </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right custom">
+
+                            <li>
+                              <% if admin_username %>
+                                <li><%= link_to "#{admin_username} ,logout", admin_session_path(1), method: 'delete'%></li>
+                                <% end %>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+            </nav>
+        </header>
+        <div class="container body-offset">
+            <% if flash[:notice] %>
+            <div class="alert alert-info">
+                <%= flash[:notice] %>
+            </div>
+            <% end %>
+
+            <%= yield %>
+
+        </div>
+
+    </body>
+</html>

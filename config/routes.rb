@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       resources :comments
     end
     resources :sessions
-    root 'dashboard#index'
+
+    get 'dashboard/index'
+
   end
 
 
