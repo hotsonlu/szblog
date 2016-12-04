@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  layout 'layouts/admin'
+  layout 'admin'
   before_action :authericate_user!
 
   def new
