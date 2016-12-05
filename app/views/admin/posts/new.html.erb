@@ -1,50 +1,49 @@
-<h1> <%= @post.new_record? ? 'create' : 'edit' %>Create New Blog</h1>
+<h1><%= @post.new_record? ? 'create' : 'edit' %>Create New Blog</h1>
 
- <div class="row">
-   <div class="col-sm-5">
+<div class="row">
+    <div class="col-sm-5">
 
-    <%= form_for @post, url: (@post.new_record? ? admin_posts_path : admin_post_path(@post)), method: (@post.new_record? ? :post : :put)  do |f| %>
-      <div class="form-group">
-        <ul class="list-unstyled">
-          <% @post.errors.messages.values.flatten.each do |error| %>
-            <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
-          <% end -%>
+        <%= form_for @post, url: (@post.new_record? ? admin_posts_path : admin_post_path(@post)), method: (@post.new_record? ? :post : :put)  do |f| %>
+        <div class="form-group">
+            <ul class="list-unstyled">
+                <% @post.errors.messages.values.flatten.each do |error| %>
+                <li>
+                    <i class="fa fa-exclamation-circle"></i>
+                    <%= error %></li>
+                <% end -%>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <%= f.text_field :title, class: "form-control", placeholder: "标题" %>
+        </div>
+
+        <div class="form-group">
+
+            <ul class="nav nav-tabs" id="myTab">
+                <li>
+                    <a data-toggle="tab" href="#tab1">content</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#tab2">preview</a>
+                </li>
+
+            </ul>
+
+            <div class="tab-content">
+                <div id="tab1" class="tab-pane fade in active">
+                    <p>
+                        <%= f.text_area :content, class: "form-control", rows: "15", placeholder: "内容" %>
+                    </p>
+                </div>
+                <div id="tab2" class="tab-pane fade"></div>
         </ul>
-      </div>
+    </div>
 
-      <div class="form-group">
-        <%= f.text_field :title, class: "form-control", placeholder: "标题" %>
-      </div>
+    <%= f.submit "保存", class: "btn btn-primary" %>
+    <% end -%>
+</div>
 
-      <div class="form-group">
+<div class="col-sm-7"></div>
 
-        <ul class="nav nav-tabs" id="myTab">
-          <li><a data-toggle="tab" href="#tab1">content</a></li>
-          <li><a data-toggle="tab" href="#tab2">preview</a></li>
-
-        </ul>
-
-        <div class="tab-content">
-          <div id="tab1" class="tab-pane fade in active">
-            <p>
-              <%= f.text_area :content, class: "form-control", rows: "15", placeholder: "内容" %>
-            </p>
-          </div>
-          <div id="tab2" class="tab-pane fade">
-          </div>
-        </ul>
-      </div>
-
-
-
-      <%= f.submit "保存", class: "btn btn-primary" %>
-     <% end -%>
-  </div>
-
-  <div class="col-sm-7">
-  </div>
-
-
-
-
- </div>
+</div>

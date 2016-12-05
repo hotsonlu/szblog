@@ -1,24 +1,33 @@
-<div class="container">
+<div class="row">
 
-      <div class="blog-header">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
-        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
-      </div>
+     <div class="col-md-8">
 
-      <div class="row">
+        <%= @posts.each do |post| %>
 
-        <div class="col-sm-8 blog-main">
+        <h2>
+            <%= post.title %>
+        </h2>
 
-          <% @posts.each do |post| %>
-            <div class="blog-post">
-              <h2 class="blog-post-title"><%= post.title %></h2>
-              <p class="blog-post-meta"><%= format_date(post.created_at) %> </p>
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            Posted on <%= format_date(post.created_at) %>
+        </p>
+        <hr>
 
-              <%= markdown(post.content) %>
-            </div>
-            <% end %>
-            <%= paginate @posts %>
+        <%= markdown(post.content) %>
 
-        </div>
-      </div>
+        <%= link_to "Read More " , blog_path(post), class: "btn btn-primary"%>
+        <br>
+        <br>
+        <br>
+
+        <% end %>
+
+        <ul class="pager">
+            <li class="paginate">
+                <%= paginate @posts %>
+            </li>
+        </ul>
+
+    </div>
 </div>
