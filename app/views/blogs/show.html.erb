@@ -1,17 +1,27 @@
-<div class="container">
+   <div class="container">
 
+        <div class="row">
+             <div class="col-lg-8">
+                 <h1><%= @post.title %></h1>
+                 <p><span class="glyphicon glyphicon-time"></span> Posted on <%= format_date(@post.created_at) %></p>
+                <p>
+                    <%= markdown(@post.content) %>
+                </p>
 
-      <div class="row">
+                <hr>
 
-        <div class="col-sm-8 blog-main">
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
 
-            <div class="blog-post">
-              <h2 class="blog-post-title"><%= @post.title %></h2>
-              <p class="blog-post-meta"><%= format_date(@post.created_at) %> </p>
-
-              <%= markdown(@post.content) %>
             </div>
 
         </div>
-      </div>
 </div>

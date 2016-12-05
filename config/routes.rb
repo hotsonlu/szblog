@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'blogs#index'
 
   namespace :admin do
     resources :posts do

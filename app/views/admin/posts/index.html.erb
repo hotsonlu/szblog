@@ -6,11 +6,14 @@
   </tr>
   <% @posts.each do |post| %>
     <tr>
-      <td><%=  link_to post.title, blog_path(post) %></td>
+      <td><%=  link_to post.title, blog_path(post), target: '_blank' %></td>
 
       <td><%= format_date(post.created_at) %></td>
       <td>
         <%= link_to "edit", edit_admin_post_path(post) %>
+      </td>
+      <td>
+        <%= link_to "show", blog_path(post), target: '_blank'%>
       </td>
     </tr>
   <% end -%>

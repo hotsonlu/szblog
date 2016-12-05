@@ -9,59 +9,63 @@
     </head>
 
     <body>
-        <header name="top">
-            <nav class="navbar navbar-default navbar-fixed-top nav-color" role="navigation" id="nav">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header nav-color">
-                        <button id="nav_collapse" type="button" class="navbar-toggle toggle-btn" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-controls="bs-navbar-collapse-1">
-                            <span class="fa fa-bars fa-lg"></span>
-                        </button>
-                        <a class="navbar-brand custom-logo-link" href="/">
-                            SZlist
-                        </a>
-                    </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <%= link_to "shenzhenlist blog", blogs_path, class: "navbar-brand" %>
 
-                    <div class="collapse navbar-collapse nav-submenu-color collapse" id="bs-navbar-collapse-1">
-
-                        <ul class="nav navbar-nav navbar-left custom">
-                          <li>
-                              <%= link_to "Blog Info", admin_posts_path %>
-                          </li>
-
-                          <li>
-                            <%= link_to "Create Blog", new_admin_post_path %>
-                          </li>
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right custom">
-
-                            <li>
-                              <% if admin_username %>
-                                <li><%= link_to "#{admin_username} ,logout", admin_session_path(1), method: 'delete'%></li>
-                                <% end %>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
                 </div>
-                <!-- /.container-->
-            </nav>
-        </header>
-        <div class="container body-offset">
-            <% if flash[:notice] %>
-            <div class="alert alert-info">
-                <%= flash[:notice] %>
-            </div>
-            <% end %>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <%= link_to "Blog Info", admin_posts_path %>
+                        </li>
+                        <li>
+                            <%= link_to "Create Blog", new_admin_post_path %>
+                        </li>
 
-            <%= yield %>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <%= link_to "home", blogs_path %>
+                        </li>
+                        <li>
+                            <% if admin_username %>
+                            <li><%= link_to "#{admin_username} ,logout", admin_session_path(1), method: 'delete'%></li>
+                            <% end %>
+                       </li>
+                  </ul>
+             </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
 
-        </div>
+      <!-- Page Content -->
+      <div class="container">
+
+          <% if flash[:notice] %>
+          <div class="alert alert-info">
+              <%= flash[:notice] %>
+          </div>
+          <% end %>
+
+          <%= yield %>
+
+          <%= render 'layouts/footer' %>
+
+      </div>
+      <!-- /.container -->
 
     </body>
 </html>
