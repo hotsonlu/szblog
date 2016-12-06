@@ -3,8 +3,16 @@
         <div class="row">
              <div class="col-lg-8">
                  <h1><%= @post.title %></h1>
+                 <p>
+                   <% @post.tags.each do |tag| %>
+                     <span class="badge"><%= tag.title %></span>
+                   <% end %>
+                 </p>
                  <p><span class="glyphicon glyphicon-time"></span> Posted on <%= format_date(@post.created_at) %></p>
-                <p>
+
+                 <hr>
+
+                 <p>
                     <%= markdown(@post.content) %>
                 </p>
 

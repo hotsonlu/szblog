@@ -9,6 +9,12 @@
         </h2>
 
         <p>
+          <% post.tags.each do |tag| %>
+            <span class="badge"><%= tag.title %></span>
+          <% end %>
+        </p>
+
+        <p>
             <span class="glyphicon glyphicon-time"></span>
             Posted on <%= format_date(post.created_at) %>
         </p>
