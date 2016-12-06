@@ -6,8 +6,11 @@
   </tr>
   <% @posts.each do |post| %>
     <tr>
-      <td><%=  link_to post.title, blog_path(post), target: '_blank' %></td>
-
+      <td><%=  link_to post.title, blog_path(post), target: '_blank' %>
+      <% post.tags.each do |tag| %>
+        <span class="badge"><%= tag.title %></span>
+      <% end %>
+      </td>
       <td><%= format_date(post.created_at) %></td>
       <td>
         <%= link_to "edit", edit_admin_post_path(post) %>

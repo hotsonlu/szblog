@@ -30,6 +30,9 @@ class Admin::PostsController < ApplicationController
      @post = Post.new(post_attrs)
 
     if @post.save
+
+      init_tags
+
       flash[:notice] = '创建博客成功'
       redirect_to admin_posts_path
     else
@@ -44,6 +47,9 @@ class Admin::PostsController < ApplicationController
 
 
     if @post.save
+      @post.tags.destroy_all
+
+      init_tags
 
       flash[:notice] = '更新博客成功'
       redirect_to admin_posts_path
@@ -56,6 +62,15 @@ class Admin::PostsController < ApplicationController
   private
   def post_attrs
     params.require(:post).permit(:title, :content)
+  end
+
+  def init_tags
+    params[:tags].split(',').each do |tag|
+      one_tag = Tag.find_by(title: tag)
+      one_tag = Tag.new(title: tag) unless one_tag
+
+      @post.tags << one_tag
+    end
   end
 
 
