@@ -45,18 +45,21 @@ class Admin::PostsController < ApplicationController
     @post = Post.find( params[:id] )
     @post.attributes = post_attrs
 
-
     if @post.save
       @post.tags.destroy_all
-
       init_tags
-
       flash[:notice] = '更新博客成功'
       redirect_to admin_posts_path
     else
       flash[:notice] = '更新博客失败'
       render :new
     end
+  end
+
+  def preview
+    content = params[:content]
+    require 'my_markdown'
+    render plain: MyMarkdown.to_md(content)
   end
 
   private
@@ -72,7 +75,4 @@ class Admin::PostsController < ApplicationController
       @post.tags << one_tag
     end
   end
-
-
-
 end
