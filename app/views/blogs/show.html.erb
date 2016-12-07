@@ -13,7 +13,7 @@
                  <hr>
 
                  <p>
-                    <%= markdown(@post.content) %>
+                    <%= MyMarkdown.to_md(@post.content) %>
                 </p>
 
                 <hr>
