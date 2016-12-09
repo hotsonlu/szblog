@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  has_many :comments
+
   validates :title, presence: {message: "title can't be blank"}
   validates :content, uniqueness: {message: "the content exist"}
 
