@@ -1,10 +1,15 @@
 <div class="comment-diag">
-  <% @post.comments.each do |comment| %>
-  <div class="comment-wrapper">
-    <%= comment.name %> <small> <%= format_time(comment.created_at) %></small>
-  </div>
-  <div class="comment-content">
-    <%= comment.content %>
-  </div>
-  <% end %>
+    <% @post.comments.each do |comment| %>
+    <div class="comment-wrapper">
+        <span class="glyphicon glyphicon-user"></span>
+        <%= comment.name %>
+        <small>
+            <span class="glyphicon glyphicon-time"></span>
+            <%= format_time(comment.created_at) %></small>
+    </div>
+    <div class="comment-content">
+        <%= comment.content %>
+    </div>
+    <br>
+    <% end %>
 </div>

@@ -13,10 +13,13 @@
       </td>
       <td><%= format_date(post.created_at) %></td>
       <td>
+        <%= link_to "comments", admin_post_comments_path(post.id) %>
+      </td>
+      <td>
         <%= link_to "edit", edit_admin_post_path(post) %>
       </td>
       <td>
-        <%= link_to "show", blog_path(post), target: '_blank'%>
+        <%= link_to "delete", admin_post_path(post), method: 'DELETE', 'data-confirm'=>'are you sure to delete?'%>
       </td>
     </tr>
   <% end -%>
