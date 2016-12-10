@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    @q = Post.search(params[:q])
+    @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

@@ -1,24 +1,21 @@
-   <div class="container">
+<div class="container">
+    <div class="row">
+       <div class="col-lg-8">
+           <h1><%= @post.title %></h1>
+           <p>
+             <% @post.tags.each do |tag| %>
+               <span class="badge"><%= tag.title %></span>
+             <% end %>
+           </p>
+           <p><span class="glyphicon glyphicon-time"></span> Posted on <%= format_date(@post.created_at) %></p>
+           <hr>
+           <p>
+              <%= MyMarkdown.to_md(@post.content) %>
+          </p>
 
-        <div class="row">
-             <div class="col-lg-8">
-                 <h1><%= @post.title %></h1>
-                 <p>
-                   <% @post.tags.each do |tag| %>
-                     <span class="badge"><%= tag.title %></span>
-                   <% end %>
-                 </p>
-                 <p><span class="glyphicon glyphicon-time"></span> Posted on <%= format_date(@post.created_at) %></p>
-
-                 <hr>
-
-                 <p>
-                    <%= MyMarkdown.to_md(@post.content) %>
-                </p>
-              </div>
-          </div>
-
-          <div class="comment-field">
-            <%= render partial: "comment", locals: {comments: @comments, post: @post} %>
-          </div>
+      <div class="comment-field">
+        <%= render partial: "comment", locals: {comments: @comments, post: @post} %>
+      </div>
+      </div>
+    </div>
 </div>

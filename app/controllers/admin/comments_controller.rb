@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  layout 'layouts/admin'
+  layout 'admin'
   before_action :authericate_user!
 
   before_action do
