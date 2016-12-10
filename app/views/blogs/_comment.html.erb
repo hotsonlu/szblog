@@ -15,7 +15,6 @@
             <%= f.submit 'Post Comment', class: 'button' %>
             <% end %>
         </div>
-        <hr>
         <%= render partial: "comments/comment_content", locals: { comments: comments, post: @post}%>
     </div>
 </div>

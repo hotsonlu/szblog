@@ -12,10 +12,15 @@
            <p>
               <%= MyMarkdown.to_md(@post.content) %>
           </p>
-
-      <div class="comment-field">
-        <%= render partial: "comment", locals: {comments: @comments, post: @post} %>
-      </div>
+          <div id="likes">
+            <%= render partial: "likes", locals: {blog: @blog} %>
+          </div>
+          <br>
+          <hr>
+          <br>
+        <div class="comment-field">
+          <%= render partial: "comment", locals: {comments: @comments, post: @post} %>
+        </div>
       </div>
     </div>
 </div>

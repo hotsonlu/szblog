@@ -1,0 +1,6 @@
+<% if Cookies.likes?(blog) %>
+<%= link_to "unlike", url: blog_like_path(blog), method: :delete, remote: true %>
+<% else %>
+<%= link_to "like", url: blog_like_path(blog), method: :post, remote: true %>
+<% end %>
+<%= blog.likes.count %>
