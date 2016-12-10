@@ -39,6 +39,11 @@ gem 'figaro'
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'ransack'
 
+gem 'mina', '0.3.8', require: false
+gem 'mina-puma', '0.3.2', require: false
+gem 'mina-multistage', '~> 1.0', '>= 1.0.2', require: false
+gem 'mina-sidekiq', '~> 0.3.1', require: false
+gem 'mina-logs', '>= 0.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
