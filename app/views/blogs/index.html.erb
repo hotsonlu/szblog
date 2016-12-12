@@ -20,7 +20,11 @@
         </p>
         <hr>
 
-        <%= MyMarkdown.to_md(post.content) %>
+        <!-- <%= MyMarkdown.to_md(post.content) %> -->
+        <%= truncate( strip_tags( MyMarkdown.to_md(post.content) ), length: 150)  %>
+
+        <br>
+        <br>
 
         <%= link_to "Read More " , blog_path(post), class: "btn btn-primary"%>
         <br>
