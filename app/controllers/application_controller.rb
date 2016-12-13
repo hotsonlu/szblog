@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     time.strftime("%Y.%m.%d")
   end
 
+  before_action do
+    @latst_posts = Post.order(created_at: 'desc').limit(8)
+  end
+
   protected
   def authericate_user!
     if ! session[:login_info]

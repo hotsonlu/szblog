@@ -10,3 +10,14 @@
         <% end %>
        </div>
     </div>
+
+
+    <div class="well">
+        <h4>Latest Posts</h4>
+        <% latst_posts.each do |post| %>
+        <ul>
+          <li><%= link_to post.title, blog_path(post) %></li>
+        </ul>
+        <% end %>
+    </div>
+</div>
