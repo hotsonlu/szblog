@@ -7,5 +7,11 @@ class BlogsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # @post.visited
+    # @comments = @post.comments.order(created_at: :desc)
+    # respond_to do |format|
+    #   format.html
+    #  end
+
   end
 end
