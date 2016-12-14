@@ -19,10 +19,7 @@
             Posted on <%= format_date(post.created_at) %>
         </p>
         <hr>
-
-        <!-- <%= MyMarkdown.to_md(post.content) %> -->
         <%= truncate( strip_tags( MyMarkdown.to_md(post.content) ), length: 150)  %>
-
         <br>
         <br>
 
