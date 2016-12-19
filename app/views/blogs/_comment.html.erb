@@ -4,13 +4,13 @@
             <h4>Leave your comments</h4>
             <%= form_for Comment.new, url: blog_comments_path(@post), class: 'new_comment', remote: true do |f| %>
             <div class="form-group" id="comment_content">
-                <%= f.text_area :content, rows: 5, placeholder: 'write a comment..' %>
+                <%= f.text_area :content, rows: 5, class: 'form-control', placeholder: 'write a comment..' %>
             </div>
             <div class="form-group" id="comment_name">
-                <%= f.text_field :name , value: cookies[:name], placeholder: 'your name..'%>
+                <%= f.text_field :name , value: cookies[:name], class: 'form-control' , placeholder: 'your name..'%>
             </div>
             <div class="form-group" id="comment_email">
-                <%= f.text_field :email , value:cookies[:email], placeholder: 'your email...'%>
+                <%= f.text_field :email , value:cookies[:email], class: 'form-control', placeholder: 'your email...'%>
             </div>
             <%= f.submit 'Post Comment', class: 'button' %>
             <% end %>
